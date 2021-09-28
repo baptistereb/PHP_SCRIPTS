@@ -24,14 +24,19 @@ function levenstein($mot1, $mot2) {
 	}
 
 	for($i = 1; $i <= strlen($mot1); $i++) {
+
 		for($j = 1; $j <= strlen($mot2); $j++) {
+
 			if($mot1[$i-1] === $mot2[$j-1]) {
-				$cost = 0;
+				$cout = 0;
 			} else {
-				$cost = 1;
+				$cout = 1;
 			}
-			$d[$i][$j] = min($d[$i-1][$j] + 1, $d[$i][$j-1] + 1, $d[$i-1][$j-1] + $cost);
+
+			$d[$i][$j] = min($d[$i-1][$j] + 1, $d[$i][$j-1] + 1, $d[$i-1][$j-1] + $cout);
+
 		}
+
 	}
 
 	return $d[strlen($mot1)][strlen($mot2)];
